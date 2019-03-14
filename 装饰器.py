@@ -49,29 +49,94 @@
 # spend_time(too)
 # spend_time(foo)
 # ________________________高级版________________________________
-import time
+# import time
+#
+#
+# def foo():
+#     print("foo")
+#     time.sleep(2)
+#
+#
+# def too():
+#     print("too")
+#     time.sleep(3)
+#
+#
+# def spend_time(f):
+#     def inner():
+#         start_time = time.time()
+#         f()
+#         end_time = time.time()
+#         print("spend %s" % (end_time - start_time))
+#     return inner
+#
+#
+# foo = spend_time(foo)
+# foo()
 
 
-def foo():
-    print("foo")
-    time.sleep(2)
+# _______________________特级版_________________________
+# import time
+#
+#
+# def spend_time(f):
+#     def inner():
+#         start_time = time.time()
+#         f()
+#         end_time = time.time()
+#         print("spend %s" % (end_time - start_time))
+#     return inner
+#
+#
+# @spend_time     # foo = spend_time(foo)
+# def foo():
+#     print("foo")
+#     time.sleep(2)
+#
+#
+# @spend_time
+# def too():
+#     print("too")
+#     time.sleep(3)
+#
+#
+# foo()
+# too()
 
 
-def too():
-    print("too")
-    time.sleep(3)
+# __________________终极版________________________
 
 
-def spend_time(f):
-    def inner():
-        start_time = time.time()
-        f()
-        end_time = time.time()
-        print("spend %s" % (end_time - start_time))
-    return inner
+def logger(flag):
 
 
-foo = spend_time(foo)
-foo()
+    def outer(f):
+        def inner(*x, **y):
+            f(*x, **y)
+            print("装饰器")
+            if flag:
+                print("添加日志")
+            else:
+                print("不添加日志")
+        return inner
+    return outer
 
 
+@logger(True)
+def adder(*a, **b):
+    sums = 0
+    for i in a:
+        sums += i
+    print(sums)
+
+
+@logger(False)
+def counts(*a, **b):
+    x = 1
+    for i in a:
+        x = x * i
+    print(x)
+
+
+adder(1, 5, 4, 5, 6)
+counts(1, 2, 3, 4, 5)
