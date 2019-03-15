@@ -109,7 +109,6 @@
 
 def logger(flag):
 
-
     def outer(f):
         def inner(*x, **y):
             f(*x, **y)
