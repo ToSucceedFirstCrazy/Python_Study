@@ -1,0 +1,1 @@
+# @Time    : 2019/3/15 11:44 # @Author  : ToSucceedFirstCrazy # @Email   : 179942072@qq.com# @Wish    : Good Good Study Day Day Up# @Blog    : https://github.com/ToSucceedFirstCrazy/Python_Study## a = (x for x in range(4))# print(next(a))# print(next(a))# print(next(a))# print(next(a))# print(next(a))for i in (x for x in range(10))    print(next(i))
