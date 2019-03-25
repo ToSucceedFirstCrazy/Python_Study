@@ -1,0 +1,1 @@
+# @Time    : 2019/3/25 16:29 # @Author  : ToSucceedFirstCrazy # @Email   : 179942072@qq.com# @Wish    : Good Good Study Day Day Up# @Blog    : https://github.com/ToSucceedFirstCrazy/Python_Studya = max(len(x.strip()) for x in open("123.txt", "r", encoding ="utf-8"))print(a)
